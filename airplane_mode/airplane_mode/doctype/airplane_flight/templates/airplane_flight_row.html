@@ -1,4 +1,11 @@
 <div>
-	<a href="/{{ doc.route |e }}">{{ (doc.title or doc.name) |e }}</a>
+	<strong>{{ (doc.title or doc.name) |e }}</strong>
+	<p>
+		<strong>{{source_airport_code}} -> {{destination_airport_code}}</strong>
+		<span>| {{frappe.utils.format_date(date_of_departure, "d MMMM, YYYY")}}</span>
+		<span>| {{time_of_departure}}</span>
+		<span>| {{frappe.utils.format_duration(duration)}}</span>
+		<a href="/{{ doc.route |e }}" class="btn btn-info">flight details</a>
+	</p>
+
 </div>
-<!-- this is a sample default list template -->

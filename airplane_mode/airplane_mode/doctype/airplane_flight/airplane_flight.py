@@ -18,7 +18,7 @@ class AirplaneFlight(WebsiteGenerator):
 		destination_airport: DF.Link
 		destination_airport_code: DF.Data | None
 		duration: DF.Duration
-		publish: DF.Check
+		is_published: DF.Check
 		route: DF.Data | None
 		source_airport: DF.Link
 		source_airport_code: DF.Data | None

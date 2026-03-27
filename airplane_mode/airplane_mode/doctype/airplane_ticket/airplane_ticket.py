@@ -20,13 +20,13 @@ class AirplaneTicket(Document):
 		amended_from: DF.Link | None
 		departure_date: DF.Date
 		departure_time: DF.Time
-		destination_airport_code: DF.ReadOnly
+		destination_airport_code: DF.Data
 		duration_of_flight: DF.Duration
 		flight: DF.Link
 		flight_price: DF.Currency
 		passenger: DF.Link
 		seat: DF.Data | None
-		source_airport_code: DF.ReadOnly
+		source_airport_code: DF.Data
 		status: DF.Literal["Booked", "Checked-In", "Boarded"]
 		total_amount: DF.Currency
 	# end: auto-generated types
@@ -72,3 +72,12 @@ class AirplaneTicket(Document):
 				msg="Cannot submit ticket unless the passenger has boarded.",
 				title="Submission Not Allowed!"
 			)
+
+	def before_save(self):
+		self.set_seat()
+
+	def set_seat(self):
+		# Generate a seat number in the format: <random-integer><random-letter A-E>
+		number = random.randint(1, 99)
+		letter = random.choice(['A', 'B', 'C', 'D', 'E'])
+		self.seat = f"{number}{letter}"

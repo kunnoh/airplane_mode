@@ -19,9 +19,9 @@
   "section_break_bnjk",
   "add_ons",
   "pricing_section",
-  "total_amount",
-  "column_break_tixv",
   "flight_price",
+  "column_break_tixv",
+  "total_amount",
   "departure_details_section",
   "departure_date",
   "departure_time",
@@ -45,12 +45,13 @@
    "search_index": 1
   },
   {
-   "fetch_from": "source_airport.code",
+   "fetch_from": "flight.source_airport_code",
    "fieldname": "source_airport_code",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Source Airport Code",
    "options": "code",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -81,10 +82,11 @@
    "reqd": 1
   },
   {
-   "fetch_from": "destination_airport.code",
+   "fetch_from": "flight.destination_airport_code",
    "fieldname": "destination_airport_code",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Destination Airport Code",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -112,8 +114,7 @@
   },
   {
    "fieldname": "section_break_bnjk",
-   "fieldtype": "Section Break",
-   "label": "Add Ons"
+   "fieldtype": "Section Break"
   },
   {
    "default": "Booked",
@@ -152,8 +153,7 @@
   {
    "fieldname": "seat",
    "fieldtype": "Data",
-   "label": "Seat",
-   "read_only": 1
+   "label": "Seat"
   },
   {
    "fieldname": "section_break_jcyy",
@@ -168,7 +168,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-26 19:59:34.610487",
+ "modified": "2026-03-26 23:30:24.404638",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "{airplane}-{MM}-{YY}-.#####",
  "creation": "2026-03-26 17:53:50.649670",
@@ -19,7 +20,9 @@
   "date_of_departure",
   "duration",
   "column_break_uvbt",
-  "time_of_departure"
+  "time_of_departure",
+  "publish",
+  "route"
  ],
  "fields": [
   {
@@ -58,10 +61,8 @@
   {
    "fetch_from": "source_airport.code",
    "fieldname": "source_airport_code",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Source Airport Code",
-   "mask": 1,
-   "options": "Airport",
    "read_only": 1
   },
   {
@@ -74,10 +75,9 @@
   {
    "fetch_from": "destination_airport.code",
    "fieldname": "destination_airport_code",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Destination Airport Code",
-   "options": "Airport",
-   "read_only": 1
+   "options": "Airport"
   },
   {
    "fieldname": "destination_airport",
@@ -110,17 +110,31 @@
   {
    "fieldname": "column_break_uvbt",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish",
+   "fieldtype": "Check",
+   "label": "Publish",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
   }
  ],
  "grid_page_length": 50,
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "publish",
  "links": [
   {
    "link_doctype": "Airplane Ticket",
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-03-26 19:51:24.206366",
+ "modified": "2026-03-27 17:15:01.834192",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
@@ -140,6 +154,7 @@
    "write": 1
   }
  ],
+ "route": "flights",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",

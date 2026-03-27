@@ -2,10 +2,9 @@
 # For license information, please see license.txt
 
 # import frappe
-from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
 
-
-class AirplaneFlight(Document):
+class AirplaneFlight(WebsiteGenerator):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -17,12 +16,15 @@ class AirplaneFlight(Document):
 		airplane: DF.Link
 		date_of_departure: DF.Date
 		destination_airport: DF.Link
-		destination_airport_code: DF.ReadOnly | None
+		destination_airport_code: DF.Data | None
 		duration: DF.Duration
+		publish: DF.Check
+		route: DF.Data | None
 		source_airport: DF.Link
-		source_airport_code: DF.ReadOnly | None
+		source_airport_code: DF.Data | None
 		status: DF.Literal["Scheduled", "Cancelled", "Completed"]
 		time_of_departure: DF.Time
 	# end: auto-generated types
 
-	pass
+	def on_submit(self):
+		self.status = "Completed"

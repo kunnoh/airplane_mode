@@ -9,7 +9,7 @@
 	<li><strong>To:</strong> {{ destination_airport_code }}</li>
 	<li><strong>Date:</strong> {{ frappe.utils.format_date(date_of_departure, "d MMMM, YYYY") }}</li>
 	<li><strong>Time:</strong> {{ time_of_departure }}</li>
-	<li><strong>Duration:</strong> {{frappe.utils.format_duration(duration)}} </li>
+	<li><strong>Duration:</strong> {{frappe.utils.format_duration(duration or 0, hide_days=True)}} </li>
 </ul>
 <a href="/book-flight-ticket-web-form/new?flight={{ name }}" class="btn btn-info">Book Flight</a>
 

@@ -1,7 +1,7 @@
 # Copyright (c) 2026, kunnoh and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.website.website_generator import WebsiteGenerator
 
 class AirplaneFlight(WebsiteGenerator):
@@ -26,5 +26,10 @@ class AirplaneFlight(WebsiteGenerator):
 		time_of_departure: DF.Time
 	# end: auto-generated types
 
+	def get_context(self, context):
+		if not self.is_published:
+			raise frappe.DoesNotExistError
+
 	def on_submit(self):
 		self.status = "Completed"
+		self.save()

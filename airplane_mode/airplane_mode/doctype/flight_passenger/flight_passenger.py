@@ -4,7 +4,6 @@
 # import frappe
 from frappe.model.document import Document
 
-
 class FlightPassenger(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
@@ -25,4 +24,5 @@ class FlightPassenger(Document):
 		self.set_full_name()
 
 	def set_full_name(self):
-		self.full_name = f"{self.first_name} {self.last_name}".strip()
+		if self.first_name or self.last_name:
+			self.full_name = f"{self.first_name or ''} {self.last_name or ''}".strip()

@@ -33,10 +33,9 @@ class AirplaneTicket(Document):
 
 	def validate(self):
 		self.remove_duplicate_addons()
-		self.calc_total_amount()
+		self.calculate_total_amount()
 
-	def calc_total_amount(self):
-		"""Calculate total amount = flight_price + sum of all add-on amounts"""
+	def calculate_total_amount(self):
 		if not self.get("add_ons"):
 			self.total_amount = self.flight_price or 0
 			return
@@ -49,7 +48,6 @@ class AirplaneTicket(Document):
 		self.total_amount = (self.flight_price or 0) + total_addons
 
 	def remove_duplicate_addons(self):
-		"""Remove duplicate add-ons based on the 'item' field, keeping the first occurrence."""
 		if not self.get("add_ons"):
 			return
 
@@ -66,7 +64,6 @@ class AirplaneTicket(Document):
 		self.set("add_ons", uniq_rows)
 
 	def before_submit(self):
-		"""Prevent submission unless the ticket status is 'Boarded'"""
 		if self.status != "Boarded":
 			frappe.throw(
 				msg="Cannot submit ticket unless the passenger has boarded.",
